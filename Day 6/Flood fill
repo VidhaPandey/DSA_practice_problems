@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        if(image[sr][sc]==1)
+        {
+            image[sr][sc]=newColor;
+            if(sr >= 1)
+                floodFill(image,sr-1,sc,newColor);
+            if(sr+1 < image[0].size())
+                floodFill(image,sr+1,sc,newColor);
+            if(sc >= 1)
+                floodFill(image,sr,sc-1,newColor);
+            if(sc+1 < image[0].size())
+                floodFill(image,sr,sc+1,newColor);
+        }
+        return image;
+    }
+};
