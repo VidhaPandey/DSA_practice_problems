@@ -1,0 +1,37 @@
+class Solution {
+public:
+    string lcp(string lcpl,string lcpr)
+    {
+        string result;
+        int n1=lcpl.length();
+        int n2=lcpr.length();
+        for(int i=0, j=0; i<=n1-1&&j<=n2-1; i++,j++)
+        {
+            if(lcpl[i]!=lcpr[i])
+                break;
+            result.push_back(lcpl[i]);
+        }
+        return result;
+    }
+    string commonPrefix(vector<string>& strs,int l,int r)
+    {
+        if(l==r)
+            return strs[l];
+        else if(r>l)
+        {
+            int mid=l+(r-l)/2;
+            
+            string lcpl=commonPrefix(strs,l,mid);
+            string lcpr=commonPrefix(strs,mid+1,r);
+            
+            return lcp(lcpl,lcpr);
+        }
+        return "";
+    }
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        int n=strs.size();
+        string ans=commonPrefix(strs,0,n-1);
+        return ans;
+    }
+};
