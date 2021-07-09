@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool findRotation(vector<vector<int>>& matrix, vector<vector<int>>& target) 
+    {
+        int k=4;
+        while(k--)
+        {
+           for(int i=0;i<matrix.size();i++)
+           {
+                for(int j=i;j<matrix.size();j++)
+                {
+                    swap(matrix[i][j],matrix[j][i]);
+                }
+           }
+            for(int i=0;i<matrix.size();i++)
+            {
+                reverse(matrix[i].begin(),matrix[i].end());
+            }
+            if(matrix==target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+};
