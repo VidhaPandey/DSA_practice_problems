@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        int start=0,end=s.size()-1;
+        
+        while(start<=end)
+        {
+            if(IsChar(s[start])&&IsChar(s[end]))
+            {
+                if(s[start]!=s[end])
+                    return false;
+                start++;
+                end--;
+            }
+            else if(!IsChar(s[start])&&IsChar(s[end])){
+                start++;
+            
+            }
+            else if(IsChar(s[start])&&!IsChar(s[end]))
+            {
+                end--;
+            }
+            else
+            {
+                start++;
+                end--;
+            }      
+        }
+        return true;
+    }
+     bool IsChar(char s)
+     {
+        if((s>='a'&&s<='z')||(s>='0'&&s<='9'))
+            return true;
+        return false;
+    }
+};
